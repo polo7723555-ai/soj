@@ -1,0 +1,340 @@
+body {
+	background-color: darkgray;
+}
+
+/* 側邊欄 */
+
+#sidebar {
+	box-sizing: border-box;
+	flex: 0 0 17.5rem;
+	position: fixed;
+	top: 0; 
+	left: 0;
+    width: 17.725rem;
+	height: 100%;
+    background-color: #4a4a4a;
+	border-right: 2px solid #dcdcdc;
+	flex-direction: column; 
+	gap: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+#sidebar.zoomleft { 
+    transform: translateX(-88%); 
+	}
+	
+/* 切換按鈕 */
+
+.toggle_btn {
+	box-sizing: border-box;
+	display: flex;
+	width: 2.25rem;
+	height: 2.25rem; 
+	background: #4a4a4a; 
+	color: #fff; 
+	border: 2px solid #dcdcdc; 
+	cursor: pointer; 
+	padding: 0;
+	margin-left: 15.5rem; 
+	justify-content: center;
+	align-items: center;
+	}
+
+.toggle_btn:hover { 
+    background: #666; 
+	}
+	
+/* 日期時間 */
+	
+.date_time {
+	box-sizing: border-box;
+	display: flex;
+	width: 15.6rem;
+	height: 2.25rem; 
+	background: #4a4a4a;
+    color: #ececec; 
+	border: 2px solid #dcdcdc; 
+	padding: 0;
+    margin-top: -2.25rem;	
+	margin-left: 0; 
+	justify-content: center;
+	align-items: center;
+}
+
+#sidebar.zoomleft #dateAndTime {
+    box-sizing: border-box;
+	display: flex;
+	width: 2.25rem;
+	height: 19.375rem; 
+	color: #ececec; 
+	background: #4a4a4a;
+	border-bottom: 2px solid #dcdcdc;
+	margin-top: -0.125rem;
+	margin-left: 15.375rem;
+	font-size: 1rem;
+	writing-mode: vertical-rl; 
+    text-orientation: upright; /* 讓數字與英文字母保持正立，不被橫向旋轉 90 度 */
+    letter-spacing: 0px; /*（可選）微調字距與排版 */
+	justify-content: center;
+	align-items: center;
+}
+
+/* 角色欄 */
+
+.char_card {
+	box-sizing: border-box;
+	display: flex;
+	width: 100%;
+	height: 16.25rem; 
+	background: #4a4a4a;
+	border-bottom: 2px solid #dcdcdc;
+}
+
+#sidebar.zoomleft #charCard {
+  display: none;
+}	
+
+.player {
+	display: flex;
+	width: 100%;
+}
+
+/* 狀態欄 */
+
+.status_item {
+	box-sizing: border-box;
+	display: flex;
+	width: 7.8rem;
+	height: 16.125rem;
+	border-bottom: 2px solid white;
+	border-left: 2px solid #dcdcdc;
+	background: #4a4a4a;
+    flex-direction: column; /* 上下排列：上方文字、下方長條 */
+}
+
+.statustext {
+	display: flex;
+	font-size: 0.875rem;
+	color: #ececec;
+    padding-left: 0.375rem;
+	padding-top: 0.25rem;
+}
+
+.status_bar {
+	width: 7.6rem;
+	height: 0.5rem; 
+	background: #6a6a6a;
+	margin-top: 0.25rem;
+
+}
+
+#sidebar.zoomleft #statusBar {
+	display: none;	
+}
+
+/* 飲料欄 */
+
+.drink_bar {
+	position: relative;
+	box-sizing: contain-box;
+	display: flex;
+	width: 9.625rem;
+	height: 16rem;
+	border: 2px solid #dcdcdc;
+	margin-left: 7.8rem;
+	margin-top: -16.25rem;
+	background: black;
+	overflow: hidden;
+	
+}
+
+.cup_outline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.drink_wrapper {
+  position: absolute;
+  bottom: 0px;       /* 錨點固定在底部 */
+  left: 0;
+  width: 100%;
+  height: 100%;    /* 初始預設 100% 滿杯 */
+  overflow: hidden;/* 裁切超出高度的圖片 */
+  display: flex;
+  align-items: flex-end; /* 讓內層圖片貼緊底部 */
+  z-index: 1;
+  transition: height 0.3s ease; /* 加上平滑喝飲料的動畫 */
+}
+
+/* 隱藏原本的大杯子、大飲料圖片 */
+#sidebar.zoomleft .drink_wrapper,#sidebar.zoomleft .cup_outline,#sidebar.zoomleft .drink_bar {
+  display: none !important; /* 強制隱藏大杯子 */
+}
+
+/* 3. 顯示最小化符號 */
+#sidebar.zoomleft .drink_minimized_icon {
+    box-sizing: border-box;
+	display: flex;
+	width: 2.25rem;
+	height: 2.875rem; 
+	background: gray;
+	border: 2px solid #dcdcdc;
+    margin-top: -0.125rem;	
+	margin-left: 15.375rem;
+	align-items: center;
+    justify-content: center;
+    z-index: 3;
+    cursor: pointer;
+}
+
+#sidebar.zoomleft .drink_icon {
+  display: block;
+  font-size: 1.375rem;  /* 符號大小 */
+  line-height: 1;
+  pointer-events: none; /* 符號本身不要擋住容器的點擊 */
+}
+
+.drink_icon {
+	  display: none;
+}
+
+/* 當點擊圖示加上 active 時，強行顯示並浮動在 Icon 旁邊 */
+#sidebar.zoomleft .drink_bar.active {
+  display: block !important;
+  position: absolute;
+  left: 9.875rem;         /* 避開 35px 側邊欄，排在右側 */
+  top: 24.25rem;        /* 依 Icon 高度調整 */
+  z-index: 999;
+}
+
+/* 確保 active 時內部的白線與飲料圖層能正常顯示 */
+#sidebar.zoomleft .drink_bar.active .drink_wrapper,
+#sidebar.zoomleft .drink_bar.active .cup_outline {
+  display: flex !important;
+}
+
+/* 棋盤格樣式 */
+
+.grid-container {
+  display: grid;
+  background-color: #1a1a1a;
+  width: fit-content;
+  border-bottom: 2px solid #dcdcdc;
+}
+
+.grid-cell {
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}  /* 單個背景格子 */
+
+.grid-cell:hover {
+  background-color: #3f3f3f; /* 格子變亮 */
+  border-color: #666;       /* 邊框變亮 */
+}
+
+.grid-cell.drag-over {
+  background-color: #444;
+  border-color: #fff;
+}  /* 當道具拖曳過來時的深色/亮色高亮*/
+
+#mainBag {	
+	border: 2px solid #dcdcdc;
+	margin-top: -0.125rem;
+}
+
+
+
+
+#sidebar.zoomleft .grid-container {
+	display: none !important;	
+}
+
+#sidebar.zoomleft .handbag_minimized_icon {
+    box-sizing: border-box;
+	display: flex;
+	width: 2.25rem;
+	height: 2.875rem; 
+	background: gray;
+	border: 2px solid #dcdcdc;
+    margin-top: -0.125rem;	
+	margin-left: 15.375rem;
+	align-items: center;
+    justify-content: center;
+    z-index: 3;
+    cursor: pointer;
+}
+
+#sidebar.zoomleft .handbag_icon {
+  display: block;
+  font-size: 1.375rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.handbag_icon {
+	  display: none;
+}
+
+#sidebar.zoomleft #mainBag.active {
+  display: grid !important;
+  position: absolute;
+  left: 17.5rem;  
+  top: 24.125rem;  
+  border: 2px solid #dcdcdc;
+  z-index: 999;
+}
+
+
+
+
+/* 按鈕群 */
+
+.btngroup {
+	box-sizing: border-box;
+	display: grid;	
+	width: 100%;
+	background: gray;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 0px;
+	margin-top: -0.125rem;
+}
+
+.btn {
+	appearance: none;
+	width: 100%;
+	height: 3.5rem;
+	background: #6a6a6a;
+	border: #989898 solid 2px;
+	box-shadow: 0;
+	transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+    cursor: pointer;
+	background: gray;
+	border: #dcdcdc solid 2px;
+}
+
+#sidebar.zoomleft #btnGroup {
+	display: none;	
+}
+
+
+
+
+
+
+
+
+
+
+	
