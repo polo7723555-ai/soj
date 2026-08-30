@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh_TW"> <!--語系-->
+  <head>
+  
+    <meta charset="UTF-8"> <!--編碼系統-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--確認任何裝置上的顯示沒有跑掉-->
+    <link rel="stylesheet" href="styles.css"> <!--連結外部CSS-->
+    <title>星之交界 Junction of Stars</title> <!--網頁標題-->
+    <script src="script.js" defer></script>
+
+  </head>
+  
+  <body>
+    <!-- 側邊欄 -->
+    <div id="sidebar">
+	  <div class="sidebar_header">
+	    <!-- 縮放鈕 -->
+	    <div class="toggle_btn" onclick="toggleSidebar()" id="toggleBtn">◀
+		</div>
+		<!-- 日期時間 -->
+		<div class="date_time datezoom" id="dateAndTime">2056年 8月 15號 星期五
+		</div>
+		<!-- 角色欄 -->
+		<div class="char_card" id="charCard">		
+		    <img src="player.jpg" alt="player" class="player"/>
+		</div>
+      </div>
+	  <div class="sidebar_scroll_content">
+	        <div class="status_drink_wrapper">
+		        <!-- 狀態欄 -->
+		        <div class="status_item" id="statusBar">
+	        	    <span class="statustext">體力</span>
+	            	<div class="status_bar">
+        			    <div class="status_fill" id="體力"></div>
+        			</div>
+        		    <span class="statustext">行動</span>
+        			<div class="status_bar">
+          			    <div class="status_fill" id="行動"></div>
+        			</div>
+        			<span class="statustext">飽食</span>
+        			<div class="status_bar">
+        			    <div class="status_fill" id="飽食"></div>
+        			</div>
+        			<span class="statustext">口渴</span>
+        			<div class="status_bar">
+        			    <div class="status_fill" id="口渴"></div>
+        			</div>
+         			<span class="statustext">整潔</span>
+          			<div class="status_bar">
+        			    <div class="status_fill" id="整潔"></div>
+	        		</div>
+        			<span class="statustext">情緒</span>
+        			<div class="status_bar">
+        			    <div class="status_fill" id="情緒"></div>
+        			</div>
+        			<span class="statustext">壓力</span>
+        			<div class="status_bar">
+        			    <div class="status_fill" id="壓力"></div>
+	        		</div>
+        		</div>
+		        <!-- 飲料欄 -->
+		        <div class="drink_bar" id="drinkBar">		   
+			        <div class="drink_wrapper" id="drinkWrapper">
+				        <img id="drinkImg" src="tea.png" class="drink_image" alt="drink" />
+		            </div>
+			        <img src="cup_outline.png" alt="drink_cap"  class="cup_outline">			
+		        </div>
+            </div>
+		<div class="drink_minimized_icon" id="drinkMinIcon" onclick="toggleDrinkbar()">
+		    <div class="drink_icon">🥤</div>
+		</div> 
+		<!-- 背包 -->
+		<div class="grid-container" id="mainBag">						
+		</div>
+        <div class="handbag_minimized_icon" id="handbagMinIcon" onclick="toggleHandbag()">
+		    <div class="handbag_icon">👜</div>
+		</div>		
+		<!-- 按鈕群 -->
+		<div class="btngroup" id="btnGroup">
+		    <button class="btn" id="codexbtn"></button>
+			<button class="btn" id="diarybtn"></button>
+			<button class="btn" id="settingbtn"></button>
+			<button class="btn" id="savebtn"></button>
+		</div>
+	  </div>	
+		
+		
+		
+		
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+  </body>
+</html>
